@@ -11,13 +11,13 @@ const getAll = async () => {
 	})
 	return projects
 }
-const getById = async id => {
-	const [project] = await db('projects').where('id', id)
+const getById = async project_id => {
+	const [project] = await db('projects').where('project_id', project_id)
 	if (project.project_completed == 0) {
-		project.project_completed = false
-	} else {
-		project.project_completed = true
-	}
+			project.project_completed = false
+		} else {
+			project.project_completed = true
+		}
 	return project
 }
 const create = async project => {
