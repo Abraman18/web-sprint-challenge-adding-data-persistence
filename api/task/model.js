@@ -2,6 +2,8 @@ const db = require('../../data/dbConfig')
 
 const getAll = async () => {
 	const tasks = await db('tasks')
+		.join('projects', 'tasks.project_id', 'projects.project_id')
+		.select('*')
 	tasks.forEach(task => {
 		if (task.task_completed == 0) {
 			task.task_completed = false
